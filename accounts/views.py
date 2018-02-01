@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def signup(request):
@@ -30,3 +30,8 @@ def loginview(request):
             return render(request, 'accounts/login.html', {'error':'The Username and Password didn\'t match'})
     else:
         return render(request, 'accounts/login.html')
+
+def logoutview(request):
+    logout(request)
+    return redirect('home')
+
